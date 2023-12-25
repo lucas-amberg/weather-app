@@ -28,7 +28,8 @@ const findCityCoords = async ( cityName: string ) => {
 } 
 
 const findCoordData = async (lat: string, long: string) => {
-  const query = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&current=temperature_2m,precipitation,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_probability_max&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=America%2FLos_Angeles&forecast_days=3`)
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&current=temperature_2m,precipitation,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_probability_max&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=America%2FLos_Angeles&forecast_days=3`;
+  const query = await fetch(url)
   const jsonQuery = await query.json()
 
   if (jsonQuery.latitude && jsonQuery.longitude) {
@@ -61,7 +62,10 @@ const findCoordData = async (lat: string, long: string) => {
   return null
 }
 
-const getImageUrl = (hour: number, weatherCode: number) => {
+const getImageUrl = (hour: number, weatherCode: number, forecast: boolean) => {
+  if (forecast) {
+    return `/${weatherCodeImagesDay[weatherCode]}.svg`
+  }
   if (hour >= 17 || hour <= 5) {
     return `/${weatherCodeImagesNight[weatherCode]}.svg`
   }

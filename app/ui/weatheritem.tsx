@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 
 import '@/app/globals.css'
+import ForecastDay from './forecastday'
 
 
 export default async function WeatherItem({cityName}: {cityName: string}) {
@@ -29,10 +30,13 @@ export default async function WeatherItem({cityName}: {cityName: string}) {
     )
   }
 
-  const imageSrc = getImageUrl(cityData.current.time, cityData.current.weatherCode)
+  const imageSrc = getImageUrl(cityData.current.time, cityData.current.weatherCode, false)
+  const tomorrowImageSrc = getImageUrl(cityData.current.time, cityData.daily.weatherCode[0], false)
+  const twoDaysImageSrc = getImageUrl(cityData.current.time, cityData.daily.weatherCode[1], false)
+  const threeDaysImageSrc = getImageUrl(cityData.current.time, cityData.daily.weatherCode[2], false)
 
   return(
-    <div className='p-3 flex-col items-center w-11/12 h-80 shadow-lg bg-gray-200 rounded-xl flex'>
+    <div className='p-3 flex-col items-center w-11/12 h-4/5 shadow-lg bg-gray-200 rounded-xl flex gap-5'>
       <div className='flex w-full items-center flex-col'>
         <h1 className='block font-bold text-xl'>{cityCoords.cityName}</h1>
         <h2 className='block'>{cityCoords.state}, {cityCoords.country}</h2>
@@ -57,6 +61,29 @@ export default async function WeatherItem({cityName}: {cityName: string}) {
             {cityData.current.precipitation}%
           </div>
         </div>
+      </div>
+      <div className='h-full w-full bg-gray-300 rounded-md flex items-center flex-col justify-evenly'>
+        <ForecastDay 
+        image={tomorrowImageSrc}
+        date={'Tomorrow'}
+        high={cityData.daily.temperatureHigh[0]}
+        low={cityData.daily.temperatureLow[0]}
+        precipitation={cityData.daily.precipitation[0]}
+        />
+        <ForecastDay 
+        image={tomorrowImageSrc}
+        date={'In 2 Days'}
+        high={cityData.daily.temperatureHigh[1]}
+        low={cityData.daily.temperatureLow[1]}
+        precipitation={cityData.daily.precipitation[1]}
+        />
+        <ForecastDay 
+        image={tomorrowImageSrc}
+        date={'In 3 Days'}
+        high={cityData.daily.temperatureHigh[2]}
+        low={cityData.daily.temperatureLow[2]}
+        precipitation={cityData.daily.precipitation[2]}
+        />
       </div>
     </div>
   )

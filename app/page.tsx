@@ -22,7 +22,7 @@ export default function Home() {
 
 
   return (
-    <div className='flex w-screen h-auto p-5 items-center justify-center'>
+    <div className='flex w-screen h-screen p-5 items-center justify-center'>
       <WeatherItem cityName={searchQuery}/>
     </div>
   )
