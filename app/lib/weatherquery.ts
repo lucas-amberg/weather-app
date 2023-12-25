@@ -14,11 +14,20 @@ const findCityCoords = async ( cityName: string ) => {
   if (jsonQuery.results && jsonQuery.results[0]) {
     const result = jsonQuery.results[0]
     if (result.latitude !== undefined && result.longitude !== undefined) {
+      let location = ''
+      if (result.admin1 && result.country) {
+        location = `${result.admin1}, ${result.country}`
+      }
+      else if (result.country) {
+        location = result.country
+      }
+      else {
+        location = ''
+      }
       return{
         latitude: result.latitude,
         longitude: result.longitude,
-        country: result.country,
-        state: result.admin1,
+        location: location,
         cityName: result.name
       }
     }

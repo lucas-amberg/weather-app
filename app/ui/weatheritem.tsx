@@ -41,7 +41,7 @@ export default async function WeatherItem({cityName}: {cityName: string}) {
     <div className='p-3 flex-col items-center  justify-evenly w-11/12 h-full shadow-lg bg-gray-200 rounded-xl flex gap-5'>
       <div className='flex w-full items-center flex-col'>
         <h1 className='block font-bold text-xl'>{cityCoords.cityName}</h1>
-        <h2 className='block'>{cityCoords.state}, {cityCoords.country}</h2>
+        <h2 className='block'>{cityCoords.location}</h2>
       </div>
       <h1 className='text-xl font-bold'>Current Weather:</h1>
       <div className='h-16 p-5 w-full bg-gray-300 rounded-md flex items-center gap-10 sm:justify-around'>
