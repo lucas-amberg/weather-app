@@ -6,6 +6,7 @@ import { findCityCoords, findCoordData } from './lib/weatherquery';
 import WeatherItem from './ui/weatheritem';
 import { Suspense } from 'react';
 import Loading from '@/app/ui/loading';
+import { Metadata } from 'next';
 
 export default function Home() {
 
