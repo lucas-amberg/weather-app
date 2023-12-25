@@ -6,6 +6,8 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 import { useDebouncedCallback } from 'use-debounce';
 
+import { findCityCoords } from '../lib/weatherquery';
+
 
 //The search component is responsible for searching for cities and querying the
 //api for the result, it will be used on the Navbar
@@ -24,6 +26,9 @@ export default function Search({placeholder}: {placeholder: string}) {
     }
     replace(`${pathname}?${params.toString()}`)
   }, 300)
+
+
+  findCityCoords('Encinitas')
 
   return(
     <div>
