@@ -6,7 +6,7 @@ export default function ForecastDay({image, date, high, low, precipitation}: {im
   return(
     <div className="bg-gray-200 w-11/12 h-36 rounded-md flex flex-col items-center p-2" suppressHydrationWarning>
       <h1 className="font-bold text-xl">{date}</h1>
-      <div className="flex items-center sm:gap-20">
+      <div className="flex items-center gap-5 sm:gap-20 w-full justify-center">
         <Image
           src={image}
           height={80}
@@ -15,15 +15,17 @@ export default function ForecastDay({image, date, high, low, precipitation}: {im
         />
         <div className="">
           <div className="text-center">
-            <span className="font-bold">High:</span> {high}&deg;F
+            <div className="font-bold">High:</div> 
+            <div>{high}&deg;F</div>
           </div>
           <div className="text-center">
-            <span className="font-bold">Low: </span>{low}&deg;F
+            <div className="font-bold">Low: </div>
+            <div>{low}&deg;F</div>
           </div>
         </div>
-        <div className="text-right">
-          <div className="font-bold text-sm">
-            Chance of Rain:
+        <div className="text-right w-20">
+          <div className="font-bold text-xs sm:text-md">
+            Precipitation Chance:
           </div>
           <div>
             {precipitation}%
