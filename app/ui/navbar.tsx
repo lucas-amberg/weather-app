@@ -7,7 +7,7 @@ export default function NavBar() {
   return(
     <div className="h-16 bg-white shadow-md flex justify-between p-4 items-center">
       <Image
-        src={'/partly-cloudy.svg'}
+        src={'/partly-cloudy-day.svg'}
         width={60}
         height={60}
         alt={'Weather App Logo (Partly Cloudy Icon)'}
