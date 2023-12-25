@@ -62,7 +62,7 @@ const findCoordData = async (lat: string, long: string) => {
 }
 
 const getImageUrl = (hour: number, weatherCode: number) => {
-  if (hour >= 18 || hour <= 6) {
+  if (hour >= 17 || hour <= 5) {
     return `/${weatherCodeImagesNight[weatherCode]}.svg`
   }
   return `/${weatherCodeImagesDay[weatherCode]}.svg`
