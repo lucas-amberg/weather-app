@@ -43,7 +43,7 @@ export default async function WeatherItem({cityName}: {cityName: string}) {
         <h1 className='block font-bold text-xl'>{cityCoords.cityName}</h1>
         <h2 className='block'>{cityCoords.state}, {cityCoords.country}</h2>
       </div>
-      <h1 className='text-2xl font-bold'>Current Weather:</h1>
+      <h1 className='text-xl font-bold'>Current Weather:</h1>
       <div className='h-16 p-5 w-full bg-gray-300 rounded-md flex items-center gap-10 sm:justify-around'>
         <div className='flex items-center'>
           <Image
@@ -65,8 +65,8 @@ export default async function WeatherItem({cityName}: {cityName: string}) {
           </div>
         </div>
       </div>
-      <h1 className='text-2xl font-bold'>Three Day Forecast:</h1>
-      <div className='h-4/6 w-full bg-gray-300 rounded-md flex items-center flex-col justify-evenly'>
+      <h1 className='text-xl font-bold'>Three Day Forecast:</h1>
+      <div className='h-full w-full bg-gray-300 rounded-md flex items-center flex-col justify-evenly'>
         <ForecastDay 
         image={tomorrowImageSrc}
         date={'Tomorrow'}
