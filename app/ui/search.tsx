@@ -18,6 +18,7 @@ export default function Search({placeholder}: {placeholder: string}) {
 
   const handleSearch = useDebouncedCallback((term: string) => {
     const params = new URLSearchParams(searchParams);
+    console.log('ran')
     if (term) {
       params.set('query', term);
     }
@@ -26,9 +27,6 @@ export default function Search({placeholder}: {placeholder: string}) {
     }
     replace(`${pathname}?${params.toString()}`)
   }, 300)
-
-
-  findCityCoords('Encinitas')
 
   return(
     <div>

@@ -1,5 +1,7 @@
 import { fetchWeatherApi } from "openmeteo"
 
+import { weatherCodeImagesDay, weatherCodeImagesNight } from "@/app/lib/weathericon"
+
 //This function takes the name of a city (from the search bar)
 //and returns the coordinates of it
 const findCityCoords = async ( cityName: string ) => {
@@ -30,6 +32,11 @@ const findCoordData = async (lat: string, long: string) => {
   const jsonQuery = await query.json()
 
   if (jsonQuery.latitude && jsonQuery.longitude) {
+
+    //Currently is just the hour but once you figure out date api you will have to
+    //change to get the hour from the time before assigning to time variable
+    const time = new Date().getHours()
+
     const results = {
       daily: {
         time: jsonQuery.daily.time,
@@ -43,7 +50,8 @@ const findCoordData = async (lat: string, long: string) => {
       current: {
         temperature: jsonQuery.current.temperature_2m,
         precipitation: jsonQuery.current.precipitation,
-        weatherCode: jsonQuery.current.weather_code
+        weatherCode: jsonQuery.current.weather_code,
+        time: time
       }
     }
 
@@ -53,7 +61,39 @@ const findCoordData = async (lat: string, long: string) => {
   return null
 }
 
+const getImageUrl = (hour: number, weatherCode: number) => {
+  if (hour >= 18 || hour <= 6) {
+    return `/${weatherCodeImagesNight[weatherCode]}.svg`
+  }
+  return `/${weatherCodeImagesDay[weatherCode]}.svg`
+}
+
+// Work on this at some point it is giving me a headace
+
+// const getTime = async (lat: string, long: string) => {
+//   const timeApiKey = process.env.TIME_API_KEY
+//   const query = await fetch(`http://api.timezonedb.com/v2.1/get-time-zone?key=${timeApiKey}&format=json&by=position&lat=${lat}&lng=-${long}`)
+//   const jsonQuery = await query.json()
+
+//   //If data is not recieved then just return daytime
+//   if (!jsonQuery.formatted) {
+//     return (
+//       '12:00'
+//     )
+//   }
+
+//   if (jsonQuery.formatted) {
+//     return(
+//       jsonQuery.formatted
+//     )
+//   }
+
+//   return '12:00'
+
+// }
+
 export  {
   findCityCoords,
-  findCoordData
+  findCoordData,
+  getImageUrl
 }
