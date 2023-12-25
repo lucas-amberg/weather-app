@@ -14,7 +14,7 @@ export default function ForecastDay({image, date, high, low, precipitation}: {im
           height={80}
           width={80}
         />
-        <div>
+        <div className="">
           <div className="text-center">
             <span className="font-bold">High:</span> {high}&deg;F
           </div>

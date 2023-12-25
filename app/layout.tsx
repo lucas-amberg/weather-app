@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`h-screen w-screen overflow-hidden sm:overflow-y-auto ${inter.className}`}>
         <NavBar/>
         {children}
       </body>
