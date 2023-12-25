@@ -13,6 +13,7 @@ export default function ForecastDay({image, date, high, low, precipitation}: {im
           src={image}
           height={80}
           width={80}
+          alt={`Forecast for ${date}`}
         />
         <div className="">
           <div className="text-center">
