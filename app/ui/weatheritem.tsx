@@ -71,14 +71,14 @@ export default async function WeatherItem({cityName}: {cityName: string}) {
         precipitation={cityData.daily.precipitation[0]}
         />
         <ForecastDay 
-        image={tomorrowImageSrc}
+        image={twoDaysImageSrc}
         date={'In 2 Days'}
         high={cityData.daily.temperatureHigh[1]}
         low={cityData.daily.temperatureLow[1]}
         precipitation={cityData.daily.precipitation[1]}
         />
         <ForecastDay 
-        image={tomorrowImageSrc}
+        image={threeDaysImageSrc}
         date={'In 3 Days'}
         high={cityData.daily.temperatureHigh[2]}
         low={cityData.daily.temperatureLow[2]}
