@@ -29,7 +29,9 @@ const findCityCoords = async ( cityName: string ) => {
 
 const findCoordData = async (lat: string, long: string) => {
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&current=temperature_2m,precipitation,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_probability_max&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=America%2FLos_Angeles&forecast_days=3`;
-  const query = await fetch(url)
+  const query = await fetch(url, {
+    cache: "no-store",
+  })
   const jsonQuery = await query.json()
 
   if (jsonQuery.latitude && jsonQuery.longitude) {

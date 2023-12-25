@@ -32,7 +32,7 @@ export default function Search({placeholder}: {placeholder: string}) {
     <div>
       <input id='search' onChange={(e) => {
         handleSearch(e.target.value);
-      }} placeholder={placeholder} className='bg-gray-300 h-9 p-2 rounded-lg' type="text" />
+      }} placeholder={placeholder} defaultValue={searchParams.get('query')?.toString()} className='bg-gray-300 h-9 p-2 rounded-lg' type="text" />
       <MagnifyingGlassIcon className='h-6 absolute right-6 top-5'/>
     </div>
   )

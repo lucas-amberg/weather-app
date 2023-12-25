@@ -2,6 +2,8 @@ import { findCityCoords, findCoordData, getImageUrl } from '@/app/lib/weatherque
 
 import { useSearchParams } from 'next/navigation'
 
+import { useEffect } from 'react'
+
 import Image from 'next/image'
 
 import '@/app/globals.css'
@@ -31,9 +33,9 @@ export default async function WeatherItem({cityName}: {cityName: string}) {
   }
 
   const imageSrc = getImageUrl(cityData.current.time, cityData.current.weatherCode, false)
-  const tomorrowImageSrc = getImageUrl(cityData.current.time, cityData.daily.weatherCode[0], false)
-  const twoDaysImageSrc = getImageUrl(cityData.current.time, cityData.daily.weatherCode[1], false)
-  const threeDaysImageSrc = getImageUrl(cityData.current.time, cityData.daily.weatherCode[2], false)
+  const tomorrowImageSrc = getImageUrl(cityData.current.time, cityData.daily.weatherCode[0], true)
+  const twoDaysImageSrc = getImageUrl(cityData.current.time, cityData.daily.weatherCode[1], true)
+  const threeDaysImageSrc = getImageUrl(cityData.current.time, cityData.daily.weatherCode[2], true)
 
   return(
     <div className='p-3 flex-col items-center w-11/12 h-full shadow-lg bg-gray-200 rounded-xl flex gap-5'>

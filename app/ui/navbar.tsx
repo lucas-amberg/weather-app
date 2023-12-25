@@ -5,7 +5,7 @@ import Search from "./search";
 //the search bar which is necessary for the site to function
 export default function NavBar() {
   return(
-    <div className="h-16 bg-white shadow-md flex justify-between p-4 items-center">
+    <div className="h-16 bg-white shadow-md flex justify-between p-4 items-center md:p-6">
       <Image
         src={'/partly-cloudy-day.svg'}
         width={60}

@@ -4,6 +4,8 @@ import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import { findCityCoords, findCoordData } from './lib/weatherquery';
 import WeatherItem from './ui/weatheritem';
+import { Suspense } from 'react';
+import Loading from '@/app/ui/loading';
 
 export default function Home() {
 
@@ -23,7 +25,9 @@ export default function Home() {
 
   return (
     <div className='flex w-screen h-screen p-5 items-start justify-center'>
-      <WeatherItem cityName={searchQuery}/>
+      <Suspense fallback={<Loading/>}>
+        <WeatherItem cityName={searchQuery}/>
+      </Suspense>
     </div>
   )
 }
