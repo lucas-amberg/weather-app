@@ -13,6 +13,7 @@ const findCityCoords = async ( cityName: string ) => {
   if (jsonQuery.results && jsonQuery.results[0]) {
     const results = jsonQuery.results
     const resultArray = []
+    //Adds each city's result object to the array
     for (let i = 0; i < results.length; i++) {
       const result = results[i]
       if (result.latitude !== undefined && result.longitude !== undefined) {
@@ -42,6 +43,7 @@ const findCityCoords = async ( cityName: string ) => {
 } 
 
 const findCoordData = async (lat: string, long: string) => {
+  //Queries weather API for weather info
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&current=temperature_2m,precipitation,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_probability_max&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=America%2FLos_Angeles&forecast_days=3`;
   const query = await fetch(url, {
     cache: "no-store",
@@ -54,6 +56,7 @@ const findCoordData = async (lat: string, long: string) => {
     //change to get the hour from the time before assigning to time variable
     const time = new Date().getHours()
 
+    //Puts the results in an object
     const results = {
       daily: {
         time: jsonQuery.daily.time,

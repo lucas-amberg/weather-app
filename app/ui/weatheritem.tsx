@@ -9,11 +9,13 @@ import Image from 'next/image'
 import '@/app/globals.css'
 import ForecastDay from './forecastday'
 
-
+//Displays weather information for the city name searched in the search bar
 export default async function WeatherItem({cityName}: {cityName: string}) {
 
+  //In the future this hook will be used to switch between cities
   const [citySelection, setCitySelection] = useState(0)
 
+  //Gets all the city coordinate options for the city name requested
   const cityCoords = await findCityCoords(cityName)
   
 
@@ -27,10 +29,14 @@ export default async function WeatherItem({cityName}: {cityName: string}) {
     )
   }
 
+  //If there was a result for the search, this will set it to show its first item by default
+  //?
   setCitySelection(0)
 
   const cityData:any = []
 
+  //For every item stored in city coords (all city options), query weather api for
+  //the data and store it in an array
   for (let i = 0; i < cityCoords.length; i++) {
     const fetchedData = await findCoordData(cityCoords[i].latitude, cityCoords[i].longitude)
     cityData.push(fetchedData)
@@ -38,7 +44,7 @@ export default async function WeatherItem({cityName}: {cityName: string}) {
 
   console.log(cityData)
 
-
+  //If no cities are found return this
   if(cityData.length === 0 || !cityData) {
     return(
       <div>
@@ -47,11 +53,13 @@ export default async function WeatherItem({cityName}: {cityName: string}) {
     )
   }
 
+  //Gets the cooresponding weather images for the city that is being shown
   const imageSrc = getImageUrl(cityData[citySelection].current.time, cityData[citySelection].current.weatherCode, false)
   const tomorrowImageSrc = getImageUrl(cityData[citySelection].current.time, cityData[citySelection].daily.weatherCode[0], true)
   const twoDaysImageSrc = getImageUrl(cityData[citySelection].current.time, cityData[citySelection].daily.weatherCode[1], true)
   const threeDaysImageSrc = getImageUrl(cityData[citySelection].current.time, cityData[citySelection].daily.weatherCode[2], true)
 
+  //Returns the HTML item
   return(
     <div className='p-3 flex-col items-center  justify-evenly w-11/12 h-full shadow-lg bg-gray-200 rounded-xl flex gap-5'>
       <div className='flex w-full items-center flex-col'>
@@ -82,6 +90,7 @@ export default async function WeatherItem({cityName}: {cityName: string}) {
       </div>
       <h1 className='text-xl font-bold lg:text-2xl'>Three Day Forecast:</h1>
       <div className='h-full w-full bg-gray-300 rounded-md flex items-center flex-col justify-evenly lg:flex-row'>
+        {/*Each of these returns a single day from the 3 day forecast*/}
         <ForecastDay 
         image={tomorrowImageSrc}
         date={'Tomorrow'}
