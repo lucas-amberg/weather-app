@@ -5,32 +5,37 @@ import { weatherCodeImagesDay, weatherCodeImagesNight } from "@/app/lib/weatheri
 //This function takes the name of a city (from the search bar)
 //and returns the coordinates of it
 const findCityCoords = async ( cityName: string ) => {
-  const query = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=1&language=en&format=json`)
+  const query = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&language=en&format=json`)
   const jsonQuery = await query.json()
-
-  
+  const numResults = 0
 
   //This makes sure the results were actually fetched
   if (jsonQuery.results && jsonQuery.results[0]) {
-    const result = jsonQuery.results[0]
-    if (result.latitude !== undefined && result.longitude !== undefined) {
-      let location = ''
-      if (result.admin1 && result.country) {
-        location = `${result.admin1}, ${result.country}`
-      }
-      else if (result.country) {
-        location = result.country
-      }
-      else {
-        location = ''
-      }
-      return{
-        latitude: result.latitude,
-        longitude: result.longitude,
-        location: location,
-        cityName: result.name
-      }
+    const results = jsonQuery.results
+    const resultArray = []
+    for (let i = 0; i < results.length; i++) {
+      const result = results[i]
+      if (result.latitude !== undefined && result.longitude !== undefined) {
+        let location = ''
+        if (result.admin1 && result.country) {
+          location = `${result.admin1}, ${result.country}`
+        }
+        else if (result.country) {
+          location = result.country
+        }
+        else {
+          location = ''
+        }
+        resultArray.push({
+          latitude: result.latitude,
+          longitude: result.longitude,
+          location: location,
+          cityName: result.name,
+        })
     }
+    
+    }
+    return resultArray
   }
   //Otherwise it returns null
   return null
