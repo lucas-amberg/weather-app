@@ -40,11 +40,11 @@ export default async function WeatherItem({cityName}: {cityName: string}) {
   return(
     <div className='p-3 flex-col items-center  justify-evenly w-11/12 h-full shadow-lg bg-gray-200 rounded-xl flex gap-5'>
       <div className='flex w-full items-center flex-col'>
-        <h1 className='block font-bold text-xl'>{cityCoords.cityName}</h1>
-        <h2 className='block'>{cityCoords.location}</h2>
+        <h1 className='block font-bold text-xl lg:text-3xl'>{cityCoords.cityName}</h1>
+        <h2 className='block lg:text-xl'>{cityCoords.location}</h2>
       </div>
-      <h1 className='text-xl font-bold'>Current Weather:</h1>
-      <div className='h-16 p-5 w-full bg-gray-300 rounded-md flex items-center gap-10 sm:justify-around'>
+      <h1 className='text-xl font-bold lg:text-2xl'>Current Weather:</h1>
+      <div className='h-16 p-5 w-full bg-gray-300 rounded-md flex items-center gap-10 sm:justify-around lg:h-24'>
         <div className='flex items-center'>
           <Image
             src={imageSrc}
@@ -57,7 +57,7 @@ export default async function WeatherItem({cityName}: {cityName: string}) {
           </h1>
         </div>
         <div className='flex flex-col justify-end'>
-          <div className='text-xs text-right font-bold md:text-sm text-gray-800'>
+          <div className='text-xs text-right font-bold md:text-sm text-gray-800 lg:text-md'>
             Precipitation Chance:
           </div>
           <div className='text-xl text-right text-gray-800'>
@@ -65,8 +65,8 @@ export default async function WeatherItem({cityName}: {cityName: string}) {
           </div>
         </div>
       </div>
-      <h1 className='text-xl font-bold'>Three Day Forecast:</h1>
-      <div className='h-full w-full bg-gray-300 rounded-md flex items-center flex-col justify-evenly'>
+      <h1 className='text-xl font-bold lg:text-2xl'>Three Day Forecast:</h1>
+      <div className='h-full w-full bg-gray-300 rounded-md flex items-center flex-col justify-evenly lg:flex-row'>
         <ForecastDay 
         image={tomorrowImageSrc}
         date={'Tomorrow'}

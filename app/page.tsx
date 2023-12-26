@@ -17,7 +17,7 @@ export default function Home() {
   if (!searchParams.get('query')) {
     return (
       <main>
-        theres nothing
+        
       </main>
     )
   } 
@@ -25,10 +25,10 @@ export default function Home() {
 
 
   return (
-    <div className='flex w-screen h-screen p-5 items-start justify-center'>
+    <main className='flex w-screen h-full p-5 items-start justify-center'>
       <Suspense fallback={<Loading/>}>
         <WeatherItem cityName={searchQuery}/>
       </Suspense>
-    </div>
+    </main>
   )
 }
