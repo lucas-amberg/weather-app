@@ -8,6 +8,9 @@ import { Suspense } from 'react';
 import Loading from '@/app/ui/loading';
 import { Metadata } from 'next';
 
+import Homepage from '@/app/ui/homepage';
+import Instructions from './ui/instructions';
+
 export default function Home() {
 
   
@@ -17,7 +20,12 @@ export default function Home() {
   if (!searchParams.get('query')) {
     return (
       <main>
-        
+        <div className="grid w-full h-96 grid-cols-1 place-items-center p-7">
+          <Homepage/>
+        </div>
+        <div className="grid w-full h-96 grid-cols-1 place-items-center p-7">
+          <Instructions/>
+        </div>
       </main>
     )
   } 
