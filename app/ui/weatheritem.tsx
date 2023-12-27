@@ -20,7 +20,7 @@ export default async function WeatherItem({cityName}: {cityName: string}) {
   if (!cityCoords) {
     return(
       <div>
-        City coordinates failed to load
+        {`City data for the city "${cityName}" failed to load, check your search query or try again`}
       </div>
     )
   }
@@ -38,7 +38,7 @@ export default async function WeatherItem({cityName}: {cityName: string}) {
   if(cityData.length === 0 || !cityData) {
     return(
       <div>
-        City data failed to load.
+        City data failed to load. Please contact the developer if this issue persists.
       </div>
     )
   }
@@ -54,7 +54,7 @@ export default async function WeatherItem({cityName}: {cityName: string}) {
 
   //Returns the HTML item
   return(
-    <ul className='w-screen h-auto flex flex-col items-center justify-center gap-10'>
+    <ul className='w-screen h-auto flex flex-col items-center justify-center gap-10 p-4'>
       {cityElements}
     </ul>
   )

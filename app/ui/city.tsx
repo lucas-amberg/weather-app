@@ -7,10 +7,10 @@ import { getImageUrl } from "../lib/weatherquery"
 import ForecastDay from "./forecastday"
 
 export default function City({cityData, cityCoords}: {cityData: any, cityCoords: any}) {
-  const imageSrc = getImageUrl(cityData.current.time, cityData.current.weatherCode, false)
-  const tomorrowImageSrc = getImageUrl(cityData.current.time, cityData.daily.weatherCode[0], true)
-  const twoDaysImageSrc = getImageUrl(cityData.current.time, cityData.daily.weatherCode[1], true)
-  const threeDaysImageSrc = getImageUrl(cityData.current.time, cityData.daily.weatherCode[2], true)
+  const imageSrc = getImageUrl(cityData.current.isDay, cityData.current.weatherCode, false)
+  const tomorrowImageSrc = getImageUrl(cityData.current.isDay, cityData.daily.weatherCode[0], true)
+  const twoDaysImageSrc = getImageUrl(cityData.current.isDay, cityData.daily.weatherCode[1], true)
+  const threeDaysImageSrc = getImageUrl(cityData.current.isDay, cityData.daily.weatherCode[2], true)
   
   return(
     <li className='p-3 flex-col items-center  justify-evenly w-11/12 h-full shadow-lg bg-gray-200 rounded-xl flex gap-5' key={`${cityCoords.latitude}${cityCoords.location}`}>
