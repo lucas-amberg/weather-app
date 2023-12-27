@@ -1,7 +1,6 @@
 # Weather App
 ## About the project
-This is a weather app I created over a few days to test my skills with the
-Next.js framework.
+This is a weather app I created over a few days to learn and test my ability with the Next.js framework, TypeScript language, and Tailwind CSS framework.
 ## Current Features
 * Search and view every city with weather data
 * View Current Temperature, Precipitation Chance, and Weather Type
