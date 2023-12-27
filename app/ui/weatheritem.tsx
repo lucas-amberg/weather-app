@@ -17,8 +17,6 @@ export default async function WeatherItem({cityName}: {cityName: string}) {
   //Gets all the city coordinate options for the city name requested
   const cityCoords = await findCityCoords(cityName)
 
-  console.log(cityCoords)
-
   if (!cityCoords) {
     return(
       <div>
