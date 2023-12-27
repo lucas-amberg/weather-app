@@ -1,6 +1,6 @@
 import { fetchWeatherApi } from "openmeteo"
-
-import { weatherCodeImagesDay, weatherCodeImagesNight } from "@/app/lib/weathericon"
+import { useEffect } from "react"
+import { weatherCodeImagesDay, weatherCodeImagesNeutral, weatherCodeImagesNight } from "@/app/lib/weathericon"
 
 //This function takes the name of a city (from the search bar)
 //and returns the coordinates of it
@@ -44,7 +44,8 @@ const findCityCoords = async ( cityName: string ) => {
 
 const findCoordData = async (lat: string, long: string) => {
   //Queries weather API for weather info
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&current=temperature_2m,precipitation,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_probability_max&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=America%2FLos_Angeles&forecast_days=3`;
+
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&current=is_day,temperature_2m,precipitation,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_probability_max&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=America%2FLos_Angeles&forecast_days=3`;
   const query = await fetch(url, {
     cache: "no-store",
   })
@@ -54,7 +55,6 @@ const findCoordData = async (lat: string, long: string) => {
 
     //Currently is just the hour but once you figure out date api you will have to
     //change to get the hour from the time before assigning to time variable
-    const time = new Date().getHours()
 
     //Puts the results in an object
     const results = {
@@ -71,7 +71,7 @@ const findCoordData = async (lat: string, long: string) => {
         temperature: jsonQuery.current.temperature_2m,
         precipitation: jsonQuery.current.precipitation,
         weatherCode: jsonQuery.current.weather_code,
-        time: time
+        isDay: jsonQuery.current.is_day
       }
     }
 
@@ -81,11 +81,11 @@ const findCoordData = async (lat: string, long: string) => {
   return null
 }
 
-const getImageUrl = (hour: number, weatherCode: number, forecast: boolean) => {
+const getImageUrl = (isDay: number, weatherCode: number, forecast: boolean) => {
   if (forecast) {
     return `/${weatherCodeImagesDay[weatherCode]}.svg`
   }
-  if (hour >= 17 || hour <= 5) {
+  if (isDay === 0) {
     return `/${weatherCodeImagesNight[weatherCode]}.svg`
   }
   return `/${weatherCodeImagesDay[weatherCode]}.svg`
