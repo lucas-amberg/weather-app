@@ -11,6 +11,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Weather App',
   description: 'A new weather app with all the great features you love.',
+  metadataBase: new URL("https://weather-j5vlrsd3r-lucas-ambergs-projects.vercel.app"),
 }
 
 export default function RootLayout({
