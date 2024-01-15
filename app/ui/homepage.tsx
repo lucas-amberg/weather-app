@@ -12,10 +12,12 @@ function getRandomImage(): string {
 // This component is the homepage of the website.
 export default function Homepage({darkMode}: {darkMode: boolean}) {
 
+  // Light mode colors
   let titleBg = 'bg-gray-100'
   let titleText = ''
   let titleLinkText = 'text-blue-600'
 
+  // Sets to dark if necessary
   if (darkMode) {
     titleBg = 'bg-gray-900'
     titleText = 'text-white'

@@ -6,8 +6,6 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 import { useDebouncedCallback } from 'use-debounce';
 
-import { findCityCoords } from '../lib/weatherquery';
-
 
 //The search component is responsible for searching for cities and querying the
 //api for the result, it will be used on the Navbar
@@ -16,11 +14,12 @@ export default function Search({placeholder, darkMode}: {placeholder: string, da
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  // Sets dark mode colors
+  // Light mode styles
   let searchBg = 'bg-gray-300'
   let searchText = ''
   let iconColor = ''
 
+  // Sets to dark mode
   if (darkMode) {
     searchBg = 'bg-gray-700'
     searchText = 'text-white'

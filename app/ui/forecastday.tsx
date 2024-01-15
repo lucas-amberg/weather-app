@@ -4,8 +4,10 @@ import Image from "next/image"
 // city component
 export default function ForecastDay({image, date, high, low, precipitation, darkMode}: {image: string, date: string, high: string, low: string, precipitation: string, darkMode: boolean}) {
 
+  // These variables store light mode colors
   let forecastBg = 'bg-gray-200'
   
+  // These set to dark if necessary
   if (darkMode) {
     forecastBg = 'bg-gray-800'
   }

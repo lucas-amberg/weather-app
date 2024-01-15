@@ -33,6 +33,7 @@ export default function Footer() {
     }
   },[]) 
 
+  // This sets the colors of the footer
   let bgColor = 'bg-white'
   let textColor = 'text-black'
   let buttonText = 'Dark'
@@ -43,7 +44,9 @@ export default function Footer() {
     buttonText = 'Light'
   }
 
-  const setDarkMode = (e) => {
+  // This is the function that sets the dark mode with the button,
+  // when you click it it sets the localstorage and then refreshes the page to apply it
+  const setDarkMode = (e: any) => {
     e.preventDefault()
     const currentColor = localStorage.getItem('darkMode')
     currentColor == 'dark' ? localStorage.setItem('darkMode', 'light') : localStorage.setItem('darkMode', 'dark')

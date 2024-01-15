@@ -3,8 +3,10 @@ import Image from "next/image"
 // This is the page that is displayed when a city is being searched
 export default function Loading({darkMode}: {darkMode: boolean}) {
 
+  // Light mode
   let textColor = 'text-black'
 
+  // Dark mode
   if (darkMode) {
     textColor = 'text-white'
   }

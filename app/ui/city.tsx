@@ -10,11 +10,13 @@ import ForecastDay from "./forecastday"
 // including its current weather and the forecast
 export default function City({cityData, cityCoords, darkMode}: {cityData: any, cityCoords: any, darkMode: boolean}) {
 
+  // These variables are the light mode colors
   let cardBg = 'bg-gray-200'
   let cardInner = 'bg-gray-300'
   let cardText = 'text-black'
   let precipitationText = 'text-gray-800'
 
+  // This sets the variables to dark mode if necessary
   if (darkMode) {
     cardBg = 'bg-gray-800'
     cardInner = 'bg-gray-900'
@@ -36,7 +38,7 @@ export default function City({cityData, cityCoords, darkMode}: {cityData: any, c
       <div className='flex w-full items-center flex-col'>
           <h1 className='block font-bold text-xl lg:text-3xl'>{cityCoords.cityName}</h1>
           <h2 className='block lg:text-xl'>{cityCoords.location}</h2>
-          <img src={countryFlagUrl} alt="" />
+          <img src={countryFlagUrl} alt="Country flag" />
         </div>
 
         {/* Current weather */}

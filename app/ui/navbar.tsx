@@ -42,9 +42,11 @@ export default function NavBar() {
     }
   },[]) 
 
+  // Light mode styles
   let bgColor = 'bg-white'
   let navIcon = 'day'
 
+  // Sets to dark mode if necessary
   if (darkClass) {
     bgColor = 'bg-gray-800'
     navIcon = 'night'
