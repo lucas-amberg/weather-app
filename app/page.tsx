@@ -4,9 +4,10 @@ import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import { findCityCoords, findCoordData } from './lib/weatherquery';
 import WeatherItem from './ui/weatheritem';
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import Loading from '@/app/ui/loading';
 import { Metadata } from 'next';
+
 
 import Homepage from '@/app/ui/homepage';
 import Instructions from './ui/instructions';
@@ -14,7 +15,25 @@ import Instructions from './ui/instructions';
 // This is the homepage and technically the whole website
 export default function Home() {
 
-  
+  // Uses state to set color
+  const [darkClass, setDarkClass] = useState(false)
+
+  // Use effect to access window object to get preference
+  useEffect(() => {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)')
+        .matches;
+    console.log(prefersDark)
+    if (prefersDark) {
+      setDarkClass(true)
+    }
+  },[]) 
+
+
+  let backgroundColor = ''
+  if (darkClass) {
+    backgroundColor = 'bg-gray-800'
+  }
+
   // This checks to see if a city was searched
   const searchParams = useSearchParams()
   const searchQuery = searchParams.get('query') ?? '';
@@ -22,12 +41,12 @@ export default function Home() {
   // If a city is not in the URL, it shows the homepage...
   if (!searchParams.get('query')) {
     return (
-      <main>
+      <main className={`${backgroundColor}`}>
         <div className="grid w-full h-96 grid-cols-1 place-items-center p-7">
-          <Homepage/>
+          <Homepage darkMode={darkClass}/>
         </div>
         <div className="grid w-full h-96 grid-cols-1 place-items-center p-7">
-          <Instructions/>
+          <Instructions darkMode={darkClass}/>
         </div>
       </main>
     )

@@ -10,14 +10,24 @@ function getRandomImage(): string {
 }
 
 // This component is the homepage of the website.
-export default function Homepage() {
+export default function Homepage({darkMode}: {darkMode: boolean}) {
+
+  let titleBg = 'bg-gray-100'
+  let titleText = ''
+  let titleLinkText = 'text-blue-600'
+
+  if (darkMode) {
+    titleBg = 'bg-gray-900'
+    titleText = 'text-white'
+    titleLinkText = 'text-blue-300'
+  }
 
   // Grabs the image to be displayed in the top component on the homepage
   const homepageImageSrc = getRandomImage();
 
   return(
-      <div className="flex flex-col gap-5 items-center justify-center w-5/6 h-400px shadow-lg h-full rounded-lg bg-gray-100">
-        <h1 className='text-xl font-bold md:text-3xl'>
+      <div className={`flex flex-col gap-5 items-center justify-center w-5/6 h-400px shadow-lg h-full rounded-lg ${titleBg}`}>
+        <h1 className={`text-xl font-bold md:text-3xl ${titleText}`}>
           Next.js Weather App
         </h1>
         <Image
@@ -27,8 +37,8 @@ export default function Homepage() {
           alt='Homepage Image'
           className='md:w-36'
         />
-        <div className='text-sm md:w-lg'>
-          Created by <Link className='text-blue-600' href={'https://lucasamberg.dev/'}>Lucas Amberg</Link>
+        <div className={`text-sm md:w-lg ${titleText}`}>
+          Created by <Link className={`${titleLinkText}`} href={'https://lucasamberg.dev/'}>Lucas Amberg</Link>
         </div>
       </div>
   )
