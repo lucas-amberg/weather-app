@@ -1,6 +1,7 @@
 import Image from "next/image"
 
-//Breaks website if refresh page with query in url already
+// This shows a single day's forecast and is used 3 times on the
+// city component
 export default function ForecastDay({image, date, high, low, precipitation}: {image: string, date: string, high: string, low: string, precipitation: string}) {
 
   return(
