@@ -12,3 +12,9 @@ body {
   color: rgb(var(--foreground-rgb));
   background: var(--background-start-rgb);
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    background-color: rgb(31 41 55);
+  }
+}

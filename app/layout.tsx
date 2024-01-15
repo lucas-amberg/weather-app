@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
 
   return (
-    <html lang="en">
+    <html lang="en" className='h-auto'>
       <body className={`h-auto grid w-screen overflow-x-hidden overflow-y-auto ${inter.className}`}>
         <NavBar/>
         {children}
