@@ -20,11 +20,26 @@ export default function Home() {
 
   // Use effect to access window object to get preference
   useEffect(() => {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)')
+    if (localStorage.getItem('darkMode')) {
+      const mode = localStorage.getItem('darkMode')
+      if (mode === 'dark') {
+        setDarkClass(true)
+      }
+      else {
+        setDarkClass(false)
+      }
+    }
+    else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)')
         .matches;
-    console.log(prefersDark)
-    if (prefersDark) {
-      setDarkClass(true)
+      if (prefersDark) {
+        localStorage.setItem('darkMode', 'dark')
+        setDarkClass(true)
+      }
+      else {
+        localStorage.setItem('darkMode', 'light')
+        setDarkClass(false)
+      }
     }
   },[]) 
 

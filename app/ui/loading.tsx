@@ -11,7 +11,7 @@ export default function Loading({darkMode}: {darkMode: boolean}) {
 
 
   return(
-    <div>
+    <div className="h-max flex items-center justify-center flex-col p-48">
       <h1 className={`text-3xl text-center ${textColor}`}>
         Loading...
       </h1>
