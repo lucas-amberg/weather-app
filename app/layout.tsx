@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://weather-app-two-alpha-12.vercel.app"),
 }
 
+// This is the layout for the whole page which shows the 
+// header and footer on every page
 export default function RootLayout({
   children,
 }: {
