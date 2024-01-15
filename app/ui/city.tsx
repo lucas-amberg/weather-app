@@ -15,12 +15,16 @@ export default function City({cityData, cityCoords}: {cityData: any, cityCoords:
   const tomorrowImageSrc = getImageUrl(cityData.current.isDay, cityData.daily.weatherCode[0], true)
   const twoDaysImageSrc = getImageUrl(cityData.current.isDay, cityData.daily.weatherCode[1], true)
   const threeDaysImageSrc = getImageUrl(cityData.current.isDay, cityData.daily.weatherCode[2], true)
+
+  // This function will get the url for the country flag image
+  const countryFlagUrl = `https://flagsapi.com/${cityCoords.countryCode}/flat/64.png`
   
   return(
     <li className='p-3 flex-col items-center  justify-evenly w-11/12 h-full shadow-lg bg-gray-200 rounded-xl flex gap-5' key={`${cityCoords.latitude}${cityCoords.location}`}>
       <div className='flex w-full items-center flex-col'>
           <h1 className='block font-bold text-xl lg:text-3xl'>{cityCoords.cityName}</h1>
           <h2 className='block lg:text-xl'>{cityCoords.location}</h2>
+          <img src={countryFlagUrl} alt="" />
         </div>
 
         {/* Current weather */}
