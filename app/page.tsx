@@ -24,9 +24,11 @@ export default function Home() {
       const mode = localStorage.getItem('darkMode')
       if (mode === 'dark') {
         setDarkClass(true)
+        document.documentElement.style.backgroundColor = 'rgb(31 41 55)' // Sets background to gray-700 if mode is dark
       }
       else {
         setDarkClass(false)
+        document.documentElement.style.backgroundColor = 'rgb(255 255 255)' // Sets background to white if mode is light
       }
     }
     else {
