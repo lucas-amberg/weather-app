@@ -1,6 +1,21 @@
-export default function Instructions() {
+
+// This component is the ui that shows the instructions
+// on how to use the app on the homepages
+export default function Instructions({darkMode}: {darkMode: boolean}) {
+
+  // Light mode styles
+  let titleBg = 'bg-gray-100'
+  let titleText = ''
+
+  // Sets to dark mode if dark
+  if (darkMode) {
+    titleBg = 'bg-gray-900'
+    titleText = 'text-white'
+  }
+
+
   return(
-  <div className="flex flex-col items-center justify-center w-5/6 h-400px shadow-lg h-full rounded-lg bg-gray-100">
+  <div className={`flex flex-col items-center justify-center w-5/6 h-400px shadow-lg h-full rounded-lg ${titleText} ${titleBg}`}>
     <h1 className='text-xl font-bold md:text-3xl'>
       How to Use:
     </h1>

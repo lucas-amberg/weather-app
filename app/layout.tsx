@@ -3,8 +3,8 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 
 import NavBar from '@/app/ui/navbar'
-import Search from '@/app/ui/search'
 import Footer from '@/app/ui/footer'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,9 +21,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
   return (
-    <html lang="en">
-      <body className={`h-auto w-screen overflow-x-hidden overflow-y-auto ${inter.className}`}>
+    <html lang="en" className='h-auto'>
+      <body className={`h-auto grid w-screen overflow-x-hidden overflow-y-auto ${inter.className}`}>
         <NavBar/>
         {children}
         <Footer/>

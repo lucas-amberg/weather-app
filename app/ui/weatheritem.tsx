@@ -1,18 +1,17 @@
-import { findCityCoords, findCoordData, getImageUrl } from '@/app/lib/weatherquery'
-
-import { useSearchParams } from 'next/navigation'
-
-import { useState, useEffect } from 'react'
-
+import { findCityCoords, findCoordData } from '@/app/lib/weatherquery'
 import City from '@/app/ui/city'
-
-import Image from 'next/image'
-
 import '@/app/globals.css'
-import ForecastDay from './forecastday'
 
 //Displays weather information for the city name searched in the search bar
-export default async function WeatherItem({cityName}: {cityName: string}) {
+export default async function WeatherItem({cityName, darkMode}: {cityName: string, darkMode: boolean}) {
+
+  // This is the light mode styles
+  let weatherItemBg = ''
+
+  // Sets to dark mode if necessary
+  if (darkMode) {
+    weatherItemBg = 'bg-gray-700'
+  }
 
   //Gets all the city coordinate options for the city name requested
   const cityCoords = await findCityCoords(cityName)
@@ -46,15 +45,15 @@ export default async function WeatherItem({cityName}: {cityName: string}) {
   const cityElements = []
 
   for (let i = 0; i < cityCoords.length; i++) {
-    cityElements.push(<City cityData={cityData[i]} cityCoords={cityCoords[i]}/>)
+    cityElements.push(<City darkMode={darkMode} cityData={cityData[i]} cityCoords={cityCoords[i]}/>)
   }
 
-  //Gets the cooresponding weather images for the city that is being shown
+  //Gets the corresponding weather images for the city that is being shown
   
 
   //Returns the HTML item
   return(
-    <ul className='w-screen h-auto flex flex-col items-center justify-center gap-10 p-4'>
+    <ul className={`w-screen h-auto flex flex-col items-center justify-center gap-10 p-4 ${weatherItemBg}`}>
       {cityElements}
     </ul>
   )
