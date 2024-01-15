@@ -46,7 +46,7 @@ export default function NavBar() {
           alt={'Weather App Logo (Partly Cloudy Icon)'}
         />
       </Link>
-      <Search placeholder="Search cities..."/>
+      <Search darkMode={darkClass} placeholder="Search cities..."/>
     </div>
   );
 }
