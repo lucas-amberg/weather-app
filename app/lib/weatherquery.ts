@@ -32,6 +32,7 @@ const findCityCoords = async ( cityName: string ) => {
           longitude: result.longitude,
           location: location,
           cityName: result.name,
+          countryCode: result.country_code,
         })
     }
     
