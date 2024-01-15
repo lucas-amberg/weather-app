@@ -31,7 +31,7 @@ export default function Home() {
 
   let backgroundColor = ''
   if (darkClass) {
-    backgroundColor = 'bg-gray-800'
+    backgroundColor = 'bg-gray-700'
   }
 
   // This checks to see if a city was searched
@@ -54,9 +54,9 @@ export default function Home() {
 
   // ... otherwise it shows the weather for that search
   return (
-    <main className='flex w-screen h-full p-5 items-start justify-center'>
-      <Suspense fallback={<Loading/>}>
-        <WeatherItem cityName={searchQuery}/>
+    <main className={`flex w-screen h-full p-5 items-start justify-center ${backgroundColor}`}>
+      <Suspense fallback={<Loading darkMode={darkClass}/>}>
+        <WeatherItem darkMode={darkClass} cityName={searchQuery}/>
       </Suspense>
     </main>
   )

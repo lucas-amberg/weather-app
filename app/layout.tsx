@@ -6,6 +6,8 @@ import NavBar from '@/app/ui/navbar'
 import Search from '@/app/ui/search'
 import Footer from '@/app/ui/footer'
 
+
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -21,6 +23,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+
   return (
     <html lang="en">
       <body className={`h-auto w-screen overflow-x-hidden overflow-y-auto ${inter.className}`}>
