@@ -1,5 +1,4 @@
-//This will return the footer that is displayed at the bottom of the screen
-
+// This will return the footer that is displayed at the bottom of the screen
 export default function Footer() {
   return(
     <div className="h-16 text-xs bg-white items-center justify-center flex flex-col">

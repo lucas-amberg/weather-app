@@ -2,13 +2,17 @@ import Image from 'next/image'
 import Link from 'next/link';
 import { weatherCodeImagesDay } from '@/app/lib/weathericon'
 
+// This function gets a random image from the icons to display
+// on the top homepage component
 function getRandomImage(): string {
   const randomNumber = Math.floor(Math.random() * 90);
   return `/${weatherCodeImagesDay[randomNumber]}.svg`
 }
 
+// This component is the homepage of the website.
 export default function Homepage() {
 
+  // Grabs the image to be displayed in the top component on the homepage
   const homepageImageSrc = getRandomImage();
 
   return(

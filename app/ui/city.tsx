@@ -6,7 +6,11 @@ import { getImageUrl } from "../lib/weatherquery"
 
 import ForecastDay from "./forecastday"
 
+// This is responsible for showing a single city's weather data
+// including its current weather and the forecast
 export default function City({cityData, cityCoords}: {cityData: any, cityCoords: any}) {
+
+  // These functions will get the images for the forecast and current weather
   const imageSrc = getImageUrl(cityData.current.isDay, cityData.current.weatherCode, false)
   const tomorrowImageSrc = getImageUrl(cityData.current.isDay, cityData.daily.weatherCode[0], true)
   const twoDaysImageSrc = getImageUrl(cityData.current.isDay, cityData.daily.weatherCode[1], true)
@@ -18,6 +22,8 @@ export default function City({cityData, cityCoords}: {cityData: any, cityCoords:
           <h1 className='block font-bold text-xl lg:text-3xl'>{cityCoords.cityName}</h1>
           <h2 className='block lg:text-xl'>{cityCoords.location}</h2>
         </div>
+
+        {/* Current weather */}
         <h1 className='text-xl font-bold lg:text-2xl'>Current Weather:</h1>
         <div className='h-16 p-5 w-full bg-gray-300 rounded-md flex items-center gap-10 sm:justify-around lg:h-24'>
           <div className='flex items-center'>
@@ -40,6 +46,8 @@ export default function City({cityData, cityCoords}: {cityData: any, cityCoords:
             </div>
           </div>
         </div>
+
+        {/* Forecast */}
         <h1 className='text-xl font-bold lg:text-2xl'>Three Day Forecast:</h1>
         <div className='h-auto w-full p-3 gap-3 bg-gray-300 rounded-md flex items-center flex-col justify-evenly lg:flex-row'>
           {/*Each of these returns a single day from the 3 day forecast*/}

@@ -1,3 +1,7 @@
+// These arrays store the weather image name depending
+// on the weather code which is the index of the name
+
+// These are used if it is daytime
 const weatherCodeImagesDay = [
   'clear-day',
   'clear-day',
@@ -100,6 +104,7 @@ const weatherCodeImagesDay = [
   'thunderstorms-day'
 ]
 
+// These are used if it is night time
 const weatherCodeImagesNight = [
   'clear-night',
   'clear-night',
@@ -202,6 +207,8 @@ const weatherCodeImagesNight = [
   'thunderstorms-night'
 ]
 
+// These are neutral images which don't depend on the time
+// of day
 const weatherCodeImagesNeutral = [
   'clear-day',
   'clear-day',

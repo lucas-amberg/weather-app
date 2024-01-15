@@ -1,5 +1,6 @@
 import Image from "next/image"
 
+// This is the page that is displayed when a city is being searched
 export default function Loading() {
   return(
     <div>
